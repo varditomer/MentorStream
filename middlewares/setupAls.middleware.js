@@ -1,4 +1,4 @@
-const authService = require('../api/auth/auth.service')
+// const authService = require('../api/auth/auth.service')
 const asyncLocalStorage = require('../services/als.service')
 
 async function setupAsyncLocalStorage(req, res, next) {

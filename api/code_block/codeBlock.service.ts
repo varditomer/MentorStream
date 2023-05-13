@@ -9,6 +9,51 @@ import * as dotenv from "dotenv"
 
 dotenv.config()
 
+
+const codeBlocks: CodeBlock[] = [
+    {
+        title: 'Async case',
+        code:
+`
+const ans = await getYesNoAns()
+console.log(ans)
+
+function getYesNoAns() {
+    const YES_NO_API_URL = 'https://yesno.wtf/api'
+    return fetch(YES_NO_API_URL)
+        .then(res => res.json())
+    }
+`
+    },
+    {
+        title: 'Object creation',
+        code:`
+let person = {
+    name: "John Doe",
+    age: 25,
+    address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA"
+    }
+};
+console.log(person.street);
+`
+    },
+    {
+        title: 'Function creation',
+        code:`
+function multiplyNumbers(num1, num2) {
+    let product = num1 + num2;
+    return product;
+}
+console.log(multiplyNumbers(5, 10));      
+`
+    },
+]
+
+// codeBlocks.forEach(codeBlock => add(codeBlock))
+
 async function query() {
     logger.debug(`codeBlock.service - getting code blocks`)
     try {
@@ -20,30 +65,31 @@ async function query() {
         throw err
     }
 }
-// const codeBlockToAdd = {
-//     title: 'Function creation',
-//     code: `
-//         function multiplyNumbers(num1, num2) {
-//             let product = num1 + num2;
-//             return product;
-//         }
-//         console.log(multiplyNumbers(5, 10));
-      
-//     `
-// }
+
+
+const codeBlockToAdd = {
+    title: 'Function creation',
+    code:
+`function multiplyNumbers(num1, num2) {
+    let product = num1 + num2;
+    return product;
+}
+console.log(multiplyNumbers(5, 10));
+`
+}
 // add(codeBlockToAdd)
 async function add(codeBlockToAdd: CodeBlock) {
     try {
         const codeBlockCollection = await dbService.getCollection(process.env.DB_COLLECTION_NAME)
         const mongoRes: any = await codeBlockCollection.insertOne(codeBlockToAdd)
-        
+
         codeBlockToAdd._id = mongoRes.insertedId.toString()
         return codeBlockToAdd
     } catch (err) {
         logger.error('Cannot add code block', err)
         throw err
     }
-    
+
 }
 
 async function update(codeBlockToUpdate: CodeBlock) {
@@ -54,10 +100,10 @@ async function update(codeBlockToUpdate: CodeBlock) {
             title: codeBlockToUpdate.title,
             code: codeBlockToUpdate.code,
         } as CodeBlock
-        
+
         const codeBlockCollection = await dbService.getCollection(process.env.DB_COLLECTION_NAME)
         await codeBlockCollection.updateOne({ _id: codeBlockToSave._id }, { $set: codeBlockToSave })
-        
+
         return codeBlockToUpdate
     } catch (err) {
         logger.error(`Cannot update code block`, err)
