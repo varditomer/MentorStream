@@ -1,6 +1,6 @@
 {
-  "name": "Rementor-Backend",
-  "description": "��#\u0000 \u0000R\u0000e\u0000M\u0000e\u0000n\u0000t\u0000o\u0000r\u0000\r\u0000 \u0000",
+  "name": "mentor-stream-backend",
+  "description": "Your new home for remote code mentoring sessions. Everything you need to mentor your students in a live stream",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/varditomer/ReMentor.git"
+    "url": "git+https://github.com/varditomer/MentorStream.git"
   },
   "author": "Tomer Vardi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/varditomer/ReMentor/issues"
+    "url": "https://github.com/varditomer/MentorStream/issues"
   },
   "keywords": [
     "Backend",
@@ -28,7 +28,7 @@
     "Cors",
     "MongoDB"
   ],
-  "homepage": "https://github.com/varditomer/ReMentor#readme",
+  "homepage": "https://github.com/varditomer/MentorStream#readme",
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.1.3",
