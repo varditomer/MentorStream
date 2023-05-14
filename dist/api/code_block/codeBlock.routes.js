@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require('express');
+const { getCodeBlocks, addCodeBlock, updateCodeBlock, removeCodeBlock } = require('./codeBlock.controller');
+const router = express.Router();
+router.get('/', getCodeBlocks);
+router.post('/', addCodeBlock);
+router.put('/', updateCodeBlock);
+router.delete('/:id', removeCodeBlock);
+module.exports = router;
