@@ -8,7 +8,6 @@ import * as dotenv from "dotenv"
 
 const app = express()
 const http = require('http').createServer(app)
-
 // Express App Config
 app.use(cookieParser())
 app.use(express.json())
@@ -27,21 +26,17 @@ if (process.env.NODE_ENV === 'production') {
 const codeBlockRoutes = require('./api/code_block/codeBlock.routes')
 
 // routes
-// const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
-// app.all('*', setupAsyncLocalStorage)
-
-// app.use('/api/auth', authRoutes)
-// app.use('/api/user', userRoutes)
 app.use('/api/codeBlock', codeBlockRoutes)
 
-// setupSocketAPI(http)
+const { setupSocketAPI } = require('./services/socket.service')
+setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
 // so when requesting http://localhost:3030/index.html/car/123 it will still respond with
 // our SPA (single page app) (the index.html file) and allow react-router to take it from there
-app.get('/**', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'))
-})
+// app.get('/**', (req: Request, res: Response) => {
+//     res.sendFile(path.join(__dirname, 'public', 'index.html'))
+// })
 
 dotenv.config()
 const logger = require('./services/logger.service')

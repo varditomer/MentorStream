@@ -33,7 +33,6 @@ async function addCodeBlock(req: Request, res: Response) {
 async function updateCodeBlock(req: Request, res: Response) {
     try {
         const codeBlockToUpdate: CodeBlock = req.body
-        console.log(`codeBlockToUpdate:`, codeBlockToUpdate)
         const updateCodeBlock: CodeBlock = await codeBlockService.update(codeBlockToUpdate)
 
         logger.info('Code block updated: ', updateCodeBlock._id)

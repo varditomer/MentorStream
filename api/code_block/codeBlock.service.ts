@@ -9,7 +9,7 @@ import * as dotenv from "dotenv"
 
 dotenv.config()
 
-
+// codeBlocks to manually insert to DB
 const codeBlocks: CodeBlock[] = [
     {
         title: 'Async case',
@@ -22,8 +22,7 @@ function getYesNoAns() {
     const YES_NO_API_URL = 'https://yesno.wtf/api'
     return fetch(YES_NO_API_URL)
         .then(res => res.json())
-    }
-`
+}`
     },
     {
         title: 'Object creation',
@@ -32,13 +31,12 @@ let person = {
     name: "John Doe",
     age: 25,
     address: {
-    street: "123 Main St",
-    city: "Anytown",
-    state: "CA"
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA"
     }
 };
-console.log(person.street);
-`
+console.log(person.street);`
     },
     {
         title: 'Function creation',
@@ -47,12 +45,11 @@ function multiplyNumbers(num1, num2) {
     let product = num1 + num2;
     return product;
 }
-console.log(multiplyNumbers(5, 10));      
-`
+console.log(multiplyNumbers(5, 10));`
     },
 ]
 
-// codeBlocks.forEach(codeBlock => add(codeBlock))
+codeBlocks.forEach(codeBlock => add(codeBlock))
 
 async function query() {
     logger.debug(`codeBlock.service - getting code blocks`)
@@ -74,10 +71,9 @@ const codeBlockToAdd = {
     let product = num1 + num2;
     return product;
 }
-console.log(multiplyNumbers(5, 10));
-`
+console.log(multiplyNumbers(5, 10));`
 }
-// add(codeBlockToAdd)
+add(codeBlockToAdd)
 async function add(codeBlockToAdd: CodeBlock) {
     try {
         const codeBlockCollection = await dbService.getCollection(process.env.DB_COLLECTION_NAME)
