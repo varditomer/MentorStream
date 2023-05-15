@@ -76,7 +76,7 @@ function multiplyNumbers(num1, num2) {
 console.log(multiplyNumbers(5, 10));`
     },
 ];
-codeBlocks.forEach(codeBlock => add(codeBlock));
+// codeBlocks.forEach(codeBlock => add(codeBlock))
 function query() {
     return __awaiter(this, void 0, void 0, function* () {
         logger.debug(`codeBlock.service - getting code blocks`);

@@ -49,7 +49,7 @@ console.log(multiplyNumbers(5, 10));`
     },
 ]
 
-codeBlocks.forEach(codeBlock => add(codeBlock))
+// codeBlocks.forEach(codeBlock => add(codeBlock))
 
 async function query() {
     logger.debug(`codeBlock.service - getting code blocks`)
